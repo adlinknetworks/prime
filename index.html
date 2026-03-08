@@ -1,72 +1,141 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<title>Adlink Network</title>
-<style>
-body{
-font-family:Arial;
-text-align:center;
-padding-top:120px;
-background:#f5f5f5;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adlink Network</title>
+  <style>
+    :root {
+      --bg: #f3f4f6;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --accent: #111827;
+    }
 
-.box{
-background:white;
-width:600px;
-margin:auto;
-padding:40px;
-border-radius:12px;
-box-shadow:0 0 20px rgba(0,0,0,0.1);
-}
+    * {
+      box-sizing: border-box;
+    }
 
-h1{
-font-size:40px;
-margin-bottom:10px;
-}
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
 
-p{
-font-size:18px;
-color:#555;
-}
+    .wrap {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 20px;
+    }
 
-</style>
+    .card {
+      width: 100%;
+      max-width: 760px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 48px 36px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: 54px;
+      line-height: 1.05;
+    }
+
+    p.lead {
+      margin: 0 auto;
+      max-width: 620px;
+      font-size: 24px;
+      line-height: 1.45;
+      color: #374151;
+    }
+
+    .meta {
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .domain {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    @media (max-width: 700px) {
+      .card {
+        padding: 32px 22px;
+      }
+
+      h1 {
+        font-size: 40px;
+      }
+
+      p.lead {
+        font-size: 20px;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="wrap">
+    <main class="card">
+      <div class="eyebrow">Adlink Network</div>
+      <h1 id="title">Willkommen</h1>
+      <p class="lead" id="text">Diese Domain wird gerade geladen.</p>
+      <div class="meta">
+        Domain: <span class="domain" id="domain">-</span>
+      </div>
+    </main>
+  </div>
 
-<div class="box">
+  <script>
+    const hostname = window.location.hostname.replace(/^www\./, "").toLowerCase();
 
-<h1 id="title">Adlink Network</h1>
-<p id="text">Loading domain...</p>
+    const DOMAIN_CONFIG = {
+      "robothits.de": {
+        title: "Robot Hits",
+        text: "Top Roboter und smarte Geräte."
+      },
+      "homehits.de": {
+        title: "Home Hits",
+        text: "Top Produkte für Zuhause."
+      },
+      "elitehits.de": {
+        title: "Elite Hits",
+        text: "Premium Produktempfehlungen."
+      }
+    };
 
-</div>
+    const fallback = {
+      title: "Adlink Network",
+      text: "Entdecke spannende Produkte und Trends."
+    };
 
-<script>
+    const page = DOMAIN_CONFIG[hostname] || fallback;
 
-const domain = window.location.hostname;
-
-if(domain.includes("robothits")){
-document.getElementById("title").innerText="Robot Hits";
-document.getElementById("text").innerText="Top Roboter und smarte Geräte.";
-}
-
-else if(domain.includes("homehits")){
-document.getElementById("title").innerText="Home Hits";
-document.getElementById("text").innerText="Top Produkte für Zuhause.";
-}
-
-else if(domain.includes("elitehits")){
-document.getElementById("title").innerText="Elite Hits";
-document.getElementById("text").innerText="Premium Produktempfehlungen.";
-}
-
-else{
-document.getElementById("title").innerText="Adlink Network";
-document.getElementById("text").innerText="Trending Products.";
-}
-
-</script>
-
+    document.getElementById("title").textContent = page.title;
+    document.getElementById("text").textContent = page.text;
+    document.getElementById("domain").textContent = hostname;
+    document.title = page.title;
+  </script>
 </body>
 </html>

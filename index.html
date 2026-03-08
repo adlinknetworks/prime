@@ -35,9 +35,15 @@ body{
 }
 
 .mail{
+    display:block;
     margin-top:12px;
     font-size:14px;
     color:#888;
+    text-decoration:none;
+}
+
+.mail:hover{
+    text-decoration:underline;
 }
 </style>
 
@@ -46,7 +52,7 @@ body{
 
 <div class="box">
     <div class="domain" id="domain"></div>
-    <div class="mail">info@wsv.net</div>
+    <a class="mail" href="mailto:info@wsv.net">info@wsv.net</a>
 </div>
 
 <script>

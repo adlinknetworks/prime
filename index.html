@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Adlink Network</title>
+<style>
+body{
+font-family:Arial;
+text-align:center;
+padding-top:120px;
+background:#f5f5f5;
+}
+
+.box{
+background:white;
+width:600px;
+margin:auto;
+padding:40px;
+border-radius:12px;
+box-shadow:0 0 20px rgba(0,0,0,0.1);
+}
+
+h1{
+font-size:40px;
+margin-bottom:10px;
+}
+
+p{
+font-size:18px;
+color:#555;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h1 id="title">Adlink Network</h1>
+<p id="text">Loading domain...</p>
+
+</div>
+
+<script>
+
+const domain = window.location.hostname;
+
+if(domain.includes("robothits")){
+document.getElementById("title").innerText="Robot Hits";
+document.getElementById("text").innerText="Top Roboter und smarte Geräte.";
+}
+
+else if(domain.includes("homehits")){
+document.getElementById("title").innerText="Home Hits";
+document.getElementById("text").innerText="Top Produkte für Zuhause.";
+}
+
+else if(domain.includes("elitehits")){
+document.getElementById("title").innerText="Elite Hits";
+document.getElementById("text").innerText="Premium Produktempfehlungen.";
+}
+
+else{
+document.getElementById("title").innerText="Adlink Network";
+document.getElementById("text").innerText="Trending Products.";
+}
+
+</script>
+
+</body>
+</html>
